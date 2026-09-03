@@ -16,6 +16,15 @@ public record LinkResponse(String code,
                            Instant lastAccessedAt) {
 
     public static LinkResponse of(ShortUrl link, String baseUrl) {
-        return new LinkResponse();
+        return new LinkResponse(
+                link.getCode(),
+                baseUrl + "/" + link.getCode(),
+                link.getLongUrl(),
+                link.getStatus(),
+                link.isCustomAlias(),
+                link.getClickCount(),
+                link.getCreatedAt(),
+                link.getExpiresAt(),
+                link.getLastAccessedAt());
     }
 }
